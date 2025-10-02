@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NhatLee's Blog - Liên Hệ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+
+    .contact {
+            min-height: calc(100vh - 100px); 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+    }
+
+    .hamburger {
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 1000; 
+        margin: 0 15px; 
+        display: inline-block !important; 
+    }
+
+    .map {
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-links a img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .social-links a img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 6px #ff7f50);
+    }
+
+    /* Hiệu ứng khi cuộn */
+    .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+    }
+    .fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+    }
+
+
+    @media (max-width: 900px) {
+        header {
+            padding: 15px 0 15px 5%; /* Vẫn giữ padding bên phải là 0 */
+        }
+        nav.main-nav {
+            display: none; 
+        }
+        header {
+            justify-content: space-between;
+        }
+        .hamburger {
+            display: block !important;
+            margin: 0;
+        }
+        .main-nav .google-login-btn {
+            display: none; 
+        }
+    }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1><a href="index.html" style="color:white; text-decoration:none;">NhatLeeBlog</a></h1>
+
+        <div class="hamburger" onclick="toggleMenu()">
+                &#9776;
+        
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="index.html">Profile (Trang Chủ)</a>
+            <a href="blog.html">Blog</a> 
+            <a href="contact.html">Thông tin liên hệ</a>
+        </nav>
+    </header>
+
+    <section class="section contact" id="contact">
+        <h2>Liên Hệ & Đặt Lịch Hẹn</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Thông tin của tôi</h3>
+                <div class="contact-item">
+                    <img src="https://img.icons8.com/ios-filled/50/marker.png" alt="marker icon">
+                    <p>Số 473 Điện Biên Phủ, Phường 25, Quận Bình Thạnh, TP.HCM</p>
+                </div>
+
+                <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.164913565891!2d106.7133!3d10.8007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528cf33e5b63f%3A0x9d12dcd8dc5bfb24!2zNDczIMSQLiDEkGnhu4duIELDrG4gUGjDsmEsIFBoxrDhu51uZyAyNSwgUXXhuq1uIELDrG5oIFRo4bqhbmgsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1svi!2s!4v1696491234567!5m2!1svi!2s"
+                    width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://img.icons8.com/ios-filled/50/phone.png" alt="phone icon">
+                    <a href="tel:+84945647176" style="color:#bebebe; text-decoration:none;">+84 945 647 176</a>
+                </div>
+                <div class="contact-item">
+                    <img src="https://img.icons8.com/ios-filled/50/email.png" alt="email icon">
+                    <a href="mailto:minhnhatle0312@gmail.com" style="color:#bebebe; text-decoration:none;">minhnhatle0312@gmail.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/leminhnhat0312" target="_blank">
+                        <img src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="Facebook">
+                    </a>
+                    <a href="https://instagram.com/nht_lee" target="_blank">
+                        <img src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="Instagram">
+                    </a>
+                    <a href="https://github.com/minhnhatle0312" target="_blank">
+                        <img src="https://img.icons8.com/ios-filled/50/github.png" alt="GitHub">
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Đặt câu hỏi cho tôi</h3>
+                <form action="mailto:minhnhatle0312@gmail.com" method="post" enctype="text/plain">
+                    <label for="email">Email của bạn:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Câu hỏi của bạn:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit">Gửi</button>
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2025 Build by NhatLee</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('mobile-nav');
+            nav.classList.toggle('open'); 
+        }
+    </script>
+    
+</body>
+</html>
