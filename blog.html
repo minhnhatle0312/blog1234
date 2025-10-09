@@ -670,77 +670,143 @@
   </footer>
 
   <script>
-    // -------------------------
-    // DỮ LIỆU BÀI VIẾT (Giữ nguyên nội dung)
-    // -------------------------
+    
   const blogPosts = [
-    { 
-      id:1, 
-      title:"Tối ưu Prompt Engineering", 
-      excerpt:"Nghệ thuật trò chuyện với AI: Khám phá các kỹ thuật nâng cao để 'ra lệnh' cho mô hình ngôn ngữ và tạo ra kết quả chính xác, sáng tạo nhất.", 
-      date:"25/09/2025", 
-      imgSrc:"https://i.postimg.cc/y8YPWsKX/nganh-khoa-hoc-may-tinh-1.jpg", 
-      fullContent:"<p>Prompt Engineering không chỉ là nhập liệu, mà là cả một quy trình tư duy. Bằng cách hiểu rõ cấu trúc, cú pháp và mục tiêu của mô hình AI, bạn có thể điều chỉnh câu lệnh (prompt) để đạt được sự tối ưu về mặt chất lượng và hiệu suất. Bài viết này đi sâu vào các kỹ thuật như 'Chain-of-Thought Prompting', 'Few-Shot Learning' và 'Negative Prompting' để giúp bạn trở thành chuyên gia 'thì thầm' với AI.</p>", 
-      category:"ai", 
-      likes:3, 
-      comments:[] 
-    },
-    { 
-      id:2, 
-      title:"Tương lai Blockchain và AI", 
-      excerpt:"Khi Tính minh bạch (Blockchain) gặp Trí tuệ (AI): Sự giao thoa công nghệ định hình lại nền kinh tế số, từ tài chính phi tập trung đến xác thực quyền sở hữu nội dung.", 
-      date:"15/09/2025", 
-      imgSrc:"https://i.postimg.cc/Px4JLsTC/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-cen.jpg", 
-      fullContent:"<p>Sự kết hợp giữa Blockchain (tính bất biến, phi tập trung) và AI (khả năng phân tích, học hỏi) là một cặp đôi hoàn hảo. Blockchain cung cấp cơ sở dữ liệu an toàn, minh bạch cho việc đào tạo và xác minh các mô hình AI. Ngược lại, AI giúp tối ưu hóa hiệu suất mạng lưới Blockchain, phát hiện gian lận và nâng cao tốc độ giao dịch. Từ việc tạo ra các tác phẩm NFT với nguồn gốc rõ ràng đến quản lý chuỗi cung ứng thông minh, đây chính là hai trụ cột của Web3 tương lai.</p>", 
-      category:"ai", 
-      likes:5, 
-      comments:[] 
-    },
-    { 
-      id:3, 
-      title:"Review: Khóa học JavaScript", 
-      excerpt:"Đánh giá chân thực về khóa học JavaScript Essentials: Liệu đây có phải là lộ trình vững chắc giúp bạn làm chủ ngôn ngữ lập trình 'linh hồn' của Web?", 
-      date:"01/09/2025", 
-      imgSrc:"https://i.postimg.cc/3w3HkyRC/Javakhoahoc.png", 
-      fullContent:"<p>Chúng tôi đã tham gia và đánh giá chi tiết khóa học JS Essentials. Khóa học này không chỉ dừng lại ở các khái niệm cơ bản như biến, hàm hay vòng lặp, mà còn đi sâu vào các chủ đề nâng cao như lập trình bất đồng bộ (Async/Await), ES6+ và cách hoạt động của Event Loop. Đây là một nền tảng vững chắc cho bất kỳ ai muốn trở thành Front-end hoặc Full-stack Developer.</p>", 
-      category:"review", 
-      likes:2, 
-      comments:[] 
-    },
-    { 
-      id:4, 
-      title:"Review: Laptop Dell XPS 13 cho dân lập trình", 
-      excerpt:"Mỏng, nhẹ và Mạnh mẽ: Đánh giá chi tiết Dell XPS 13, chiếc laptop được mệnh danh là 'vũ khí' tối thượng cho các developer cần sự di động và hiệu năng cao.", 
-      date:"20/08/2025", 
-      imgSrc:"https://i.postimg.cc/Xv273K8Z/image.png", 
-      fullContent:"<p>Dell XPS 13 nổi bật với thiết kế InfinityEdge gần như không viền và bộ vi xử lý Intel Core i thế hệ mới. Bài đánh giá tập trung vào hiệu suất biên dịch code, khả năng đa nhiệm khi chạy Docker/VM, thời lượng pin thực tế và trải nghiệm gõ phím liên tục. Nếu bạn đang tìm kiếm sự cân bằng hoàn hảo giữa tính thẩm mỹ và sức mạnh kỹ thuật, XPS 13 là một lựa chọn đáng cân nhắc.</p>", 
-      category:"review", 
-      likes:0, 
-      comments:[] 
-    },
-    { 
-      id:5, 
-      title:"Kinh nghiệm học AI từ con số 0", 
-      excerpt:"Đừng sợ Machine Learning! Chia sẻ lộ trình tự học và các tài nguyên quý giá để bắt đầu hành trình từ một người mới hoàn toàn đến dự án AI đầu tiên của bạn.", 
-      date:"05/08/2025", 
-      imgSrc:"https://i.postimg.cc/Yqf7Mf2t/Kho-a-ho-c-AI-marketer-1-1024x640.png", 
-      fullContent:"<p>Hành trình học AI không hề dễ dàng, nhưng có thể đi được. Mình bắt đầu bằng việc làm quen với Python và các thư viện cơ bản (NumPy, Pandas), sau đó chuyển sang Machine Learning cơ bản (Regression, Classification) trên các nền tảng như Kaggle và Coursera. Quan trọng nhất là: Đừng ngần ngại tham gia các dự án thực tế, dù nhỏ, để áp dụng kiến thức.</p>", 
-      category:"review", 
-      likes:0, 
-      comments:[] 
-    },
-    { 
-      id:6, 
-      title:"5 website giúp cải thiện năng suất làm việc", 
-      excerpt:"Tăng gấp đôi hiệu quả công việc với Top 5 công cụ online đã được kiểm chứng giúp quản lý thời gian, thiết kế và giao tiếp tối ưu.", 
-      date:"22/07/2025", 
-      imgSrc:"https://i.postimg.cc/XqkPSLKN/image.png", 
-      fullContent:"<ul><li>**Notion:** Không chỉ là công cụ ghi chú, Notion là không gian làm việc tất cả trong một cho cá nhân và đội nhóm.</li><li>**Trello:** Quản lý dự án theo phương pháp Kanban một cách trực quan và dễ dàng.</li><li>**Grammarly:** Trợ lý viết lách giúp bài viết, email của bạn chuyên nghiệp và không lỗi ngữ pháp.</li><li>**RescueTime:** Tự động theo dõi thời gian và phân tích thói quen làm việc để bạn biết mình đang dành thời gian vào đâu.</li><li>**Canva:** Công cụ thiết kế đồ họa đơn giản nhưng mạnh mẽ, giúp tạo ra nội dung đẹp mắt chỉ trong vài phút.</li></ul>", 
-      category:"other", 
-      likes:0, 
-      comments:[] 
-    },
+      { 
+        id:1, 
+        title:"Tối ưu Prompt Engineering", 
+        excerpt:"Nghệ thuật trò chuyện với AI: Khám phá các kỹ thuật nâng cao để 'ra lệnh' cho mô hình ngôn ngữ và tạo ra kết quả chính xác, sáng tạo nhất.", 
+        date:"25/09/2025", 
+        imgSrc:"https://i.postimg.cc/y8YPWsKX/nganh-khoa-hoc-may-tinh-1.jpg", 
+        fullContent:"<p>Prompt Engineering không chỉ là nhập liệu, mà là cả một quy trình tư duy. Bằng cách hiểu rõ cấu trúc, cú pháp và mục tiêu của mô hình AI, bạn có thể điều chỉnh câu lệnh (prompt) để đạt được sự tối ưu về mặt chất lượng và hiệu suất. Bài viết này đi sâu vào các kỹ thuật như 'Chain-of-Thought Prompting', 'Few-Shot Learning' và 'Negative Prompting' để giúp bạn trở thành chuyên gia 'thì thầm' với AI.</p>", 
+        category:"ai", 
+        likes:3, 
+        comments:[] 
+      },
+      { 
+        id:2, 
+        title:"Tương lai Blockchain và AI", 
+        excerpt:"Khi Tính minh bạch (Blockchain) gặp Trí tuệ (AI): Sự giao thoa công nghệ định hình lại nền kinh tế số, từ tài chính phi tập trung đến xác thực quyền sở hữu nội dung.", 
+        date:"15/09/2025", 
+        imgSrc:"https://i.postimg.cc/Px4JLsTC/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-cen.jpg", 
+        fullContent:"<p>Sự kết hợp giữa Blockchain (tính bất biến, phi tập trung) và AI (khả năng phân tích, học hỏi) là một cặp đôi hoàn hảo. Blockchain cung cấp cơ sở dữ liệu an toàn, minh bạch cho việc đào tạo và xác minh các mô hình AI. Ngược lại, AI giúp tối ưu hóa hiệu suất mạng lưới Blockchain, phát hiện gian lận và nâng cao tốc độ giao dịch. Từ việc tạo ra các tác phẩm NFT với nguồn gốc rõ ràng đến quản lý chuỗi cung ứng thông minh, đây chính là hai trụ cột của Web3 tương lai.</p>", 
+        category:"ai", 
+        likes:5, 
+        comments:[] 
+      },
+      { 
+        id:3, 
+        title:"Review: Khóa học JavaScript", 
+        excerpt:"Đánh giá chân thực về khóa học JavaScript Essentials: Liệu đây có phải là lộ trình vững chắc giúp bạn làm chủ ngôn ngữ lập trình 'linh hồn' của Web?", 
+        date:"01/09/2025", 
+        imgSrc:"https://i.postimg.cc/3w3HkyRC/Javakhoahoc.png", 
+        fullContent:"<p>Chúng tôi đã tham gia và đánh giá chi tiết khóa học JS Essentials. Khóa học này không chỉ dừng lại ở các khái niệm cơ bản như biến, hàm hay vòng lặp, mà còn đi sâu vào các chủ đề nâng cao như lập trình bất đồng bộ (Async/Await), ES6+ và cách hoạt động của Event Loop. Đây là một nền tảng vững chắc cho bất kỳ ai muốn trở thành Front-end hoặc Full-stack Developer.</p>", 
+        category:"review", 
+        likes:2, 
+        comments:[] 
+      },
+      { 
+        id:4, 
+        title:"Review: Laptop Dell XPS 13 cho dân lập trình", 
+        excerpt:"Mỏng, nhẹ và Mạnh mẽ: Đánh giá chi tiết Dell XPS 13, chiếc laptop được mệnh danh là 'vũ khí' tối thượng cho các developer cần sự di động và hiệu năng cao.", 
+        date:"20/08/2025", 
+        imgSrc:"https://i.postimg.cc/Xv273K8Z/image.png", 
+        fullContent:"<p>Dell XPS 13 nổi bật với thiết kế InfinityEdge gần như không viền và bộ vi xử lý Intel Core i thế hệ mới. Bài đánh giá tập trung vào hiệu suất biên dịch code, khả năng đa nhiệm khi chạy Docker/VM, thời lượng pin thực tế và trải nghiệm gõ phím liên tục. Nếu bạn đang tìm kiếm sự cân bằng hoàn hảo giữa tính thẩm mỹ và sức mạnh kỹ thuật, XPS 13 là một lựa chọn đáng cân nhắc.</p>", 
+        category:"review", 
+        likes:0, 
+        comments:[] 
+      },
+      { 
+        id:5, 
+        title:"Kinh nghiệm học AI từ con số 0", 
+        excerpt:"Đừng sợ Machine Learning! Chia sẻ lộ trình tự học và các tài nguyên quý giá để bắt đầu hành trình từ một người mới hoàn toàn đến dự án AI đầu tiên của bạn.", 
+        date:"05/08/2025", 
+        imgSrc:"https://i.postimg.cc/Yqf7Mf2t/Kho-a-ho-c-AI-marketer-1-1024x640.png", 
+        fullContent:"<p>Hành trình học AI không hề dễ dàng, nhưng có thể đi được. Mình bắt đầu bằng việc làm quen với Python và các thư viện cơ bản (NumPy, Pandas), sau đó chuyển sang Machine Learning cơ bản (Regression, Classification) trên các nền tảng như Kaggle và Coursera. Quan trọng nhất là: Đừng ngần ngại tham gia các dự án thực tế, dù nhỏ, để áp dụng kiến thức.</p>", 
+        category:"review", 
+        likes:0, 
+        comments:[] 
+      },
+      { 
+        id:6, 
+        title:"5 website giúp cải thiện năng suất làm việc", 
+        excerpt:"Tăng gấp đôi hiệu quả công việc với Top 5 công cụ online đã được kiểm chứng giúp quản lý thời gian, thiết kế và giao tiếp tối ưu.", 
+        date:"22/07/2025", 
+        imgSrc:"https://i.postimg.cc/XqkPSLKN/image.png", 
+        fullContent:"<ul><li>**Notion:** Không chỉ là công cụ ghi chú, Notion là không gian làm việc tất cả trong một cho cá nhân và đội nhóm.</li><li>**Trello:** Quản lý dự án theo phương pháp Kanban một cách trực quan và dễ dàng.</li><li>**Grammarly:** Trợ lý viết lách giúp bài viết, email của bạn chuyên nghiệp và không lỗi ngữ pháp.</li><li>**RescueTime:** Tự động theo dõi thời gian và phân tích thói quen làm việc để bạn biết mình đang dành thời gian vào đâu.</li><li>**Canva:** Công cụ thiết kế đồ họa đơn giản nhưng mạnh mẽ, giúp tạo ra nội dung đẹp mắt chỉ trong vài phút.</li></ul>", 
+        category:"other", 
+        likes:0, 
+        comments:[] 
+      },
+
+      { 
+        id:7, 
+        title:"Giới thiệu Java: Ngôn ngữ lập trình vạn năng", 
+        excerpt:"Java – từ ứng dụng di động đến hệ thống doanh nghiệp: Vì sao nó vẫn giữ vị trí số 1 trong lập trình hiện đại?", 
+        date:"10/07/2025", 
+        imgSrc:"https://i.postimg.cc/MH9g5sBq/image.png", 
+        fullContent:"<p>Java được biết đến với khẩu hiệu 'Write Once, Run Anywhere'. Đây là ngôn ngữ hướng đối tượng mạnh mẽ, có thể chạy trên nhiều nền tảng khác nhau nhờ JVM. Với sự hỗ trợ từ cộng đồng đông đảo và kho thư viện phong phú, Java vẫn là lựa chọn hàng đầu trong phát triển web, mobile (Android) và hệ thống doanh nghiệp.</p>", 
+        category:"review", 
+        likes:4, 
+        comments:[] 
+      },
+      { 
+        id:8, 
+        title:"Spring Boot – Nền tảng cho ứng dụng doanh nghiệp", 
+        excerpt:"Khám phá sức mạnh của Spring Boot: Từ phát triển nhanh chóng đến triển khai ứng dụng quy mô lớn.", 
+        date:"05/07/2025", 
+        imgSrc:"https://i.postimg.cc/tgPQbtKK/image.png", 
+        fullContent:"<p>Spring Boot là framework phổ biến nhất trong hệ sinh thái Java, giúp đơn giản hóa việc xây dựng các ứng dụng doanh nghiệp. Với cấu hình tối giản, tích hợp sẵn nhiều công cụ mạnh mẽ, Spring Boot cho phép lập trình viên tập trung vào logic thay vì mất thời gian thiết lập môi trường. Đây là nền tảng lý tưởng cho microservices và ứng dụng web hiện đại.</p>", 
+        category:"review", 
+        likes:6, 
+        comments:[] 
+      },
+      { 
+        id:9, 
+        title:"JavaScript vs Java – Sự khác biệt cần biết", 
+        excerpt:"Cùng tên nhưng khác biệt: Java và JavaScript – hai thế giới với mục đích và ứng dụng riêng biệt.", 
+        date:"01/07/2025", 
+        imgSrc:"https://i.postimg.cc/RZh4ktCs/image.png", 
+        fullContent:"<p>Nhiều người nhầm lẫn Java và JavaScript. Thực tế, Java là ngôn ngữ lập trình độc lập, hướng đối tượng, còn JavaScript là ngôn ngữ kịch bản chạy trên trình duyệt để tạo sự tương tác cho web. Cả hai đều quan trọng: Java thống trị backend, còn JavaScript không thể thiếu ở frontend.</p>", 
+        category:"other", 
+        likes:3, 
+        comments:[] 
+      },
+      { 
+        id:10, 
+        title:"Hibernate – ORM mạnh mẽ trong Java", 
+        excerpt:"Giảm tải lập trình viên với Hibernate: Quản lý dữ liệu hiệu quả mà không cần viết SQL phức tạp.", 
+        date:"20/06/2025", 
+        imgSrc:"https://i.postimg.cc/5954L1kw/image.png", 
+        fullContent:"<p>Hibernate là framework ORM (Object Relational Mapping) nổi tiếng trong Java, giúp ánh xạ các đối tượng Java với bảng dữ liệu trong cơ sở dữ liệu. Điều này giúp tiết kiệm thời gian viết truy vấn SQL, đồng thời giảm lỗi và tăng năng suất cho các ứng dụng quy mô lớn.</p>", 
+        category:"code", 
+        likes:5, 
+        comments:[] 
+      },
+      { 
+        id:11, 
+        title:"Mô hình MVC trong Java Web", 
+        excerpt:"Hiểu rõ kiến trúc Model – View – Controller để xây dựng ứng dụng web Java dễ bảo trì và mở rộng.", 
+        date:"10/06/2025", 
+        imgSrc:"https://i.postimg.cc/MGcZQQhB/image.png", 
+        fullContent:"<p>MVC (Model – View – Controller) là mô hình kiến trúc phổ biến trong lập trình Java Web. Nó chia ứng dụng thành 3 phần riêng biệt: Model (dữ liệu), View (giao diện) và Controller (xử lý logic). Điều này giúp code gọn gàng, dễ bảo trì và nâng cấp khi dự án mở rộng.</p>", 
+        category:"code", 
+        likes:2, 
+        comments:[] 
+      },
+      { 
+        id:12, 
+        title:"Java 21 – Những tính năng mới nổi bật", 
+        excerpt:"Phiên bản Java mới nhất mang đến cải tiến vượt bậc: Hiệu năng, bảo mật và lập trình hiện đại hơn.", 
+        date:"01/06/2025", 
+        imgSrc:"https://i.postimg.cc/4yvx3RrX/image.png", 
+        fullContent:"<p>Java 21 giới thiệu nhiều tính năng đáng chú ý như Pattern Matching nâng cao, Virtual Threads (Project Loom) và cải thiện hiệu năng JVM. Đây là bước tiến quan trọng giúp Java cạnh tranh mạnh mẽ hơn trong kỷ nguyên điện toán đám mây và xử lý song song.</p>", 
+        category:"code", 
+        likes:7, 
+        comments:[] 
+      },
   ];
+
 
 console.log(blogPosts);
 
