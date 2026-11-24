@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NhatLee's Blog - Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Dự Án Tiêu Biểu</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+    .hamburger {
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 1000; 
+        margin: 0 15px; 
+        display: inline-block !important; 
+    }
+
+    @media (max-width: 900px) {
+        header {
+            padding: 15px 0 15px 5%; /* Vẫn giữ padding bên phải là 0 */
+        }
+        nav.main-nav {
+            display: none; 
+        }
+        header {
+            justify-content: space-between;
+        }
+        .hamburger {
+            display: block !important;
+            margin: 0;
+        }
+        .main-nav .google-login-btn {
+            display: none; 
+        }
+    }
+</style>
+</head>
+
+<body>
+
+    <header>
+        <h1><a href="index.html" style="color:white; text-decoration:none;">NhatLeeBlog</a></h1>
+        
+        <nav class="main-nav">
+            <a href="index.html">Profile</a>
+            <a href="#cybersecurity">Cybersecurity</a>
+            <a href="#github-work">GitHub workspace</a>
+            <a href="#courses">Skills & Achievements</a>
+            <a href="#services">Programming courses</a>
+            </div>    
+        </nav>
+
+        <div class="hamburger" onclick="toggleMenu()">
+                &#9776;
+        
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="index.html">Profile (Trang Chủ)</a>
+            <a href="index.html#cybersecurity">Cybersecurity</a>
+            <a href="blog.html">Blog</a> 
+            <a href="contact.html">Thông tin liên hệ</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-text">
+            <h1>NhatLee </h1>
+            <p style="font-size:20px; color: #ddd;">
+                I am a Cybersecurity student at HUTECH, focused on Identity & Access Management, Zero Trust and secure full-stack systems.
+            </p>
+            <p style="font-size:10px; color:#ddd;">
+                "I build by starting with the fundamentals: understand the system, verify every identity, grant only the access that is needed, and leave a clear audit trail. My current work connects cybersecurity with backend development, web applications and practical systems that people can actually use."
+            </p>
+        </div>
+        <div class="hero-image">
+            <img src="assets/minh-nhat-avatar.jpg" alt="Ảnh đại diện của Lê Minh Nhật" loading="eager">
+        </div>
+    </section>
+
+    <section class="quote-section" id="favorite-quote">
+    <div class="quote-container">
+        
+        <h2 class="quote-title">Triết lý Học tập và Làm việc của tôi</h2>
+
+        <p class="quote-description">Mình tin rằng một sản phẩm tốt không chỉ chạy được. Nó phải dễ hiểu, có trách nhiệm với dữ liệu và đủ an toàn để người khác tin tưởng sử dụng.</p>
+
+        <div class="quote-box">
+            <p class="animated-quote">
+                "Tôi thấy tự hào về những điều chúng tôi chưa làm cũng như đã làm. Sáng tạo có nghĩa là nói 'không' với hàng nghìn thứ".
+            </p>
+            <p class="quote-author">
+                — Steve Jobs
+            </p>
+        </div>
+        </div>
+    </section>
+    
+    <section class="section intro-achievement-link" id="intro">
+    <div class="intro-container">
+        <h2 class="main-heading">Từ Tư Duy đến Hành Động: Hành Trình và Mục Tiêu Của Tôi 🚀</h2>
+        
+        <p class="intro-paragraph">
+            Chào mừng bạn đến với không gian chia sẻ của tôi! Định hình tư duy và xác lập mục tiêu rõ ràng là nền tảng cho sự phát triển. Trong thế giới công nghệ đầy biến động, tôi tin rằng thành công chỉ đến khi có sự dung hòa giữa năng lực chuyên môn vững chắc (Hard Skills) và tư duy sáng tạo cùng khả năng thích nghi linh hoạt (Soft Skills).
+        </p>
+
+        <p class="intro-call-to-action">
+            Niềm đam mê học hỏi và nỗ lực không ngừng của tôi được thể hiện qua Quá trình học tập, các Chứng chỉ, Kỹ năng và Thành tựu dưới đây. Cùng khám phá nhé!.👇
+        </p>
+    </div>
+    </section>
+    
+
+
+    <section class="section education-timeline" id="education">
+        <h2>Hành Trình Kiến Tạo Tri Thức</h2>
+
+        <div class="timeline-container">
+            
+            <div class="timeline-item">
+                <h3 class="timeline-title">
+                    <span class="timeline-date">Lớp 6 - Lớp 9:</span> Khám phá và Nền tảng Cơ bản
+                </h3>
+                <div class="timeline-details">
+                    <p>
+                        Đây là giai đoạn đặt nền móng của sự yêu thích tư duy logic, đối với các môn Khoa học Tự nhiên. Tập trung phát triển khả năng giải quyết vấn đề cơ bản.
+                    </p>
+                    <ul class="achievements-list">
+                        <li>Đạt học sinh Giỏi liên tục các năm.</li>
+                        <li>Tham gia các kì thi học sinh giỏi toán - tin. Đạt giải Ba kì thi học sinh giỏi toán - tin cấp tỉnh</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3 class="timeline-title">
+                    <span class="timeline-date">Lớp 10 - Lớp 12:</span> Định hướng học và làm ngành Công nghệ thông tin
+                </h3>
+                <div class="timeline-details">
+                    <p>
+                        Tập trung vào khối kiến thức Tự nhiên và bắt đầu tìm hiểu sâu hơn về thế giới Công nghệ thông tin. Lần đầu tiếp xúc với lập trình và các thuật toán cơ bản.
+                    </p>
+                    <ul class="achievements-list">
+                        <li>Tiếp tục tham gia các cuộc thi về học thuật toán.</li>
+                        <li>Chủ động học hỏi các kĩ năng tin học văn phòng và tư duy máy tính.</li>
+                        <li>Học hỏi và tìm hiểu một số ngôn ngữ lập trình cơ bản.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3 class="timeline-title">
+                    <span class="timeline-date">Hiện tại (Đại học):</span> Chuyên sâu và Ứng dụng Công nghệ tin
+                </h3>
+                <div class="timeline-details">
+                    <p>
+                        Tập trung nghiên cứu chuyên sâu về Khoa học Máy tính/Kỹ thuật Phần mềm. Đây là giai đoạn chuyển hóa kiến thức nền tảng thành các kĩ năng thực tế (Hard Skills) và tích cực tham gia các dự án, cuộc thi. Nâng cao kinh nghiệm bản thân.
+                    </p>
+                    <ul class="achievements-list">
+                        <li>Nâng cao hơn khả năng lập trình của bản thân</li>
+                        <li>Tham gia tìm hiểu, nghiên cứu các đề tài khoa học</li>
+                        <li>Lập trình một số chức năng cơ bản, demo một số web đơn giản</li>
+                        <li>Nghiên cứu các xu hướng công nghệ mới: Prompt Engineering, BlockChain, AI.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+
+    <section class="section courses" id="courses">
+        <h2>Các Chứng chỉ - Kĩ năng - Thành tựu </h2>
+        <div class="service-grid">
+            <div class="service-item">
+                <img src="https://i.postimg.cc/dtwbnmxC/Java-Script-Essentials1.jpg" alt="chứng chỉ 1" onclick="openImageModal(this.src)">
+                <div class="service-content">
+                    <h3>Chứng chỉ JavaScript Essentials 1</h3>
+                    <p>Graduates are able to understand JavaScript syntax and data types, think algorithmically, develop simple programs, handle basic errors, and apply programming in real software environments.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="https://i.postimg.cc/Gh1RmNLT/Java-Script-Essentials2-Update20251009-32-ppveq2.png" alt="chứng chỉ 2 " onclick="openImageModal(this.src)">
+                <div class="service-content">
+                    <h3>Chứng chỉ JavaScript Essentials 2</h3>
+                    <p>Strong foundation in OOP, asynchronous programming, and advanced JavaScript techniques for data management and algorithmic development.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="https://i.postimg.cc/1XhQykB7/Networking-Basics.jpg" alt="chứng chỉ 3" onclick="openImageModal(this.src)">
+                <div class="service-content">
+                    <h3>Chứng chỉ NetworkingBasics</h3>
+                    <p>Graduates understand key concepts of network communication, IP addressing (IPv4/IPv6), routing, Ethernet, protocols, and can configure, test, and troubleshoot network connectivity.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="https://i.postimg.cc/WznfxCHk/SINHVIENXUATSAC.jpg" alt="chứng chỉ 4" onclick="openImageModal(this.src)">
+                <div class="service-content">
+                    <h3>Sinh viên xuất sắc</h3>
+                    <p>Đạt sinh viên xuất sắc của khoa công nghệ thông tin 2023 - 2024.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="https://i.postimg.cc/5NKsvBdb/Gen-ZThingking.jpg" alt="chứng chỉ 5" onclick="openImageModal(this.src)">
+                <div class="service-content">
+                    <h3>Tham gia cuộc thi GenZ Thinking</h3>
+                    <p>Là một sinh viên có khả năng, năng khiếu nói tiếng anh, có suy nghĩ hướng ngoại.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="https://i.postimg.cc/NjWbCQjn/Prompt-Engineering.jpg" alt="chứng chỉ 6" onclick="openImageModal(this.src)">
+                <div class="service-content">
+                    <h3>Tham gia tìm hiểu Prompt Engineering</h3>
+                    <p>Học cách viết câu lệnh rõ ràng, chính xác và có chiến lược để hướng dẫn AI tạo ra kết quả đúng ý, nhanh và hiệu quả.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="https://i.postimg.cc/XvdLTtZY/Block-Chain-AI.jpg" alt="chứng chỉ 7" onclick="openImageModal(this.src)">
+                <div class="service-content">
+                    <h3>Tham gia nghiên cứu BlockChain-AI</h3>
+                    <p>Hiểu và ứng dụng công nghệ chuỗi khối kết hợp trí tuệ nhân tạo để tạo ra hệ thống minh bạch, bảo mật và thông minh hơn.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="https://i.postimg.cc/7649DX7M/Race-Hutech.jpg" alt="chứng chỉ 8" onclick="openImageModal(this.src)">
+                <div class="service-content">
+                    <h3>Phát triển xe tự hành</h3>
+                    <p>Có khả năng code điểu khiến xe từ xa, hiểu biết về các linh kiện nhúng, các chi tiết máy động cơ</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="https://i.postimg.cc/7YHRSP5M/Xu-n-t-nh-nghuy-n.jpg" alt="chứng chỉ 9" onclick="openImageModal(this.src)">
+                <div class="service-content">
+                    <h3>Tham gia chiến dịch xuân tình nguyện</h3>
+                    <p>Ngoài học thuật kĩ năng giao tiếp đám đông khá mạnh, thích nghi với môi trường đông người.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section" id="projects">
+    <h2 class="section-title simple">Các Dự Án Tiêu Biểu</h2>
+    <div class="projects-container">
+
+        <div class="project-card project-card-priority" data-project-id="zero-trust">
+            <div class="project-image-placeholder">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=85" alt="Nền tảng quản lý danh tính và bảo mật Zero Trust" class="project-img" loading="lazy">
+            </div>
+            <div class="project-content">
+                <span class="project-status-badge">DỰ ÁN ƯU TIÊN / CYBERSECURITY</span>
+                <h3 class="project-title">FlowSecurity: Zero Trust IAM Platform</h3>
+                <p class="project-duration">2025 - nay · Security Engineer / Backend Developer</p>
+                <p class="project-description">Nền tảng quản lý danh tính và truy cập theo tư duy Zero Trust: xác minh liên tục, phân quyền tối thiểu và ghi nhận đầy đủ hoạt động bảo mật.</p>
+                <div class="project-tech-stack"><span class="tech-tag">Keycloak</span><span class="tech-tag">SSO / OIDC</span><span class="tech-tag">MFA</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Docker</span></div>
+                <div class="project-actions"><a href="https://github.com/minhnhatle0312/ZeroTrust" target="_blank" rel="noopener" class="btn btn-primary">Xem ZeroTrust</a><a href="https://github.com/minhnhatle0312" target="_blank" rel="noopener" class="btn btn-secondary">GitHub cá nhân</a></div>
+                <button class="btn btn-detail" data-toggle-detail="zero-trust">Xem kiến trúc</button>
+                <div class="project-details-content" id="details-zero-trust"></div>
+            </div>
+        </div>
+
+        <div class="project-card project-card-priority" data-project-id="svms-pro">
+            <div class="project-image-placeholder">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85" alt="Hệ thống quản lý tiêm chủng thông minh" class="project-img" loading="lazy">
+            </div>
+            <div class="project-content">
+                <span class="project-status-badge">CAPSTONE / FULL-STACK WEB</span>
+                <h3 class="project-title">SVMS Pro: Smart Vaccination Management</h3>
+                <p class="project-duration">2024 - nay · Full-stack Developer</p>
+                <p class="project-description">Hệ thống số hóa trung tâm tiêm chủng với cổng khách hàng, không gian lâm sàng và ERP; kết hợp đặt lịch, hồ sơ, kho vaccine, nhân sự, báo cáo và AI assistant.</p>
+                <div class="project-tech-stack"><span class="tech-tag">FastAPI</span><span class="tech-tag">JWT</span><span class="tech-tag">SQLite</span><span class="tech-tag">AI Chatbot</span><span class="tech-tag">Bootstrap</span></div>
+                <div class="project-actions"><a href="https://github.com/minhnhatle0312/DuAnTiemChungThongMinh" target="_blank" rel="noopener" class="btn btn-primary">Xem SVMS Pro</a><a href="https://minhnhatle0312.github.io/TiemChungThongMinh/frontend_web_tinh/index.html" target="_blank" rel="noopener" class="btn btn-secondary">Live demo</a></div>
+                <button class="btn btn-detail" data-toggle-detail="svms-pro">Xem module</button>
+                <div class="project-details-content" id="details-svms-pro"></div>
+            </div>
+        </div>
+
+        <div class="project-card project-card-priority" data-project-id="nhatlee-nsuong">
+            <div class="project-image-placeholder">
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85" alt="Dự án hợp tác NhatLee và NSuong" class="project-img" loading="lazy">
+            </div>
+            <div class="project-content">
+                <span class="project-status-badge">COLLABORATION / OPEN PROJECT</span>
+                <h3 class="project-title">NhatLee & NSuong</h3>
+                <p class="project-duration">Collaborative repository · Minh Nhật & NSương</p>
+                <p class="project-description">Không gian dự án hợp tác được xây dựng cùng NSương. Mình giới thiệu repo này như một phần trong hành trình làm việc nhóm, chia sẻ source và hoàn thiện sản phẩm qua GitHub.</p>
+                <div class="project-tech-stack"><span class="tech-tag">Collaboration</span><span class="tech-tag">Git</span><span class="tech-tag">Documentation</span></div>
+                <div class="project-actions"><a href="https://github.com/minhnhatle0312/NhatleeAndNSuong" target="_blank" rel="noopener" class="btn btn-primary">Xem repository</a><a href="https://github.com/minhnhatle0312/ZeroTrust" target="_blank" rel="noopener" class="btn btn-secondary">ZeroTrust</a></div>
+                <button class="btn btn-detail" data-toggle-detail="nhatlee-nsuong">Xem ghi chú</button>
+                <div class="project-details-content" id="details-nhatlee-nsuong"></div>
+            </div>
+        </div>
+
+        <div class="project-card project-card-priority" data-project-id="mobile-firebase">
+            <div class="project-image-placeholder">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=85" alt="Ứng dụng mobile Flutter kết nối Firebase" class="project-img" loading="lazy">
+            </div>
+            <div class="project-content">
+                <span class="project-status-badge">MOBILE / FIREBASE</span>
+                <h3 class="project-title">Lập trình di động</h3>
+                <p class="project-duration">Flutter · Firebase · Realtime application</p>
+                <p class="project-description">Repository thực hành phát triển ứng dụng mobile bằng Flutter, kết nối Firebase và các bài tập gọi API; thể hiện nền tảng xây dựng sản phẩm đa nền tảng.</p>
+                <div class="project-tech-stack"><span class="tech-tag">Flutter</span><span class="tech-tag">Dart</span><span class="tech-tag">Firebase</span><span class="tech-tag">Realtime Database</span></div>
+                <div class="project-actions"><a href="https://github.com/minhnhatle0312/laptrinhdidong" target="_blank" rel="noopener" class="btn btn-primary">Xem repository</a><a href="https://github.com/minhnhatle0312" target="_blank" rel="noopener" class="btn btn-secondary">GitHub cá nhân</a></div>
+                <button class="btn btn-detail" data-toggle-detail="mobile-firebase">Xem công nghệ</button>
+                <div class="project-details-content" id="details-mobile-firebase"></div>
+            </div>
+        </div>
+
+        <div class="project-card" data-project-id="green-cart">
+            <div class="project-image-placeholder">
+                <img src="https://i.postimg.cc/jS91yLZg/image.png" alt="AI Fitness Tracker App" class="project-img">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">VisionFit: AI Gym Tracker</h3>
+                <p class="project-duration">4/2025 - 8/2025 • AI/Fullstack Developer</p>
+                <p class="project-description">Phát triển ứng dụng sử dụng Computer Vision(OpenCV) để theo dõi và sửa lỗi tư thế tập gym theo thời gian thực.</p>
+                
+                <div class="project-tech-stack">
+                    <span class="tech-tag">Python(Flask)</span>
+                    <span class="tech-tag">OpenCV</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">React Native</span>
+                    <span class="tech-tag more-tech" data-tooltip="MediaPipe, AWS S3, Redis, Docker">+7</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://github.com/minhnhatle0312" target="_blank" class="btn btn-primary">GitHub</a>
+                    <a href="https://github.com/minhnhatle0312" target="_blank" rel="noopener" class="btn btn-secondary">Tài liệu GitHub</a>
+                </div>
+
+                <button class="btn btn-detail" data-toggle-detail="green-cart">Xem Chức Năng</button>
+
+                <div class="project-details-content" id="details-green-cart">
+                    </div>
+            </div>
+        </div>
+
+        <div class="project-card" data-project-id="financial-dashboard">
+            <div class="project-image-placeholder">
+                <img src="https://i.postimg.cc/Prg90LnS/image.png" alt="Decentralized NFT Marketplace" class="project-img">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">ArtChain: Sàn Giao Dịch NFT Phi Tập Trung</h3>
+                <p class="project-duration">12/2024 - 3/2025 • Blockchain Developer</p>
+                <p class="project-description">Xây dựng một nền tảng NFT Marketplace cho phép giao dịch tác phẩm nghệ thuật số trên mạng lưới Ethereum/Solana.</p>
+                
+                <div class="project-tech-stack">
+                    <span class="tech-tag">Solidity</span>
+                    <span class="tech-tag">Truffle/Hardhat</span>
+                    <span class="tech-tag">Web3.js/Ethers.js</span>
+                    <span class="tech-tag">ReactJS</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://github.com/minhnhatle0312" target="_blank" class="btn btn-primary">GitHub</a>
+                    <a href="https://github.com/minhnhatle0312" target="_blank" rel="noopener" class="btn btn-secondary">Tài liệu GitHub</a>
+                </div>
+
+                <button class="btn btn-detail" data-toggle-detail="financial-dashboard">Xem Chức Năng</button>
+
+                <div class="project-details-content" id="details-financial-dashboard">
+                    </div>
+            </div>
+        </div>
+        
+    </div>
+    </section>
+
+    <!-- Phần bổ sung: định hướng an ninh mạng, giữ nguyên toàn bộ nội dung cũ -->
+    <section class="cyber-focus-section" id="cybersecurity">
+        <div class="cyber-focus-heading">
+            <span class="cyber-kicker">ĐỊNH HƯỚNG HIỆN TẠI</span>
+            <h2>Cybersecurity learning track</h2>
+            <p>Bổ sung vào hành trình Công nghệ thông tin của mình: học từ nền tảng, thực hành trong môi trường được phép và ghi lại kết quả trên GitHub.</p>
+        </div>
+        <div class="cyber-focus-grid">
+            <article class="cyber-focus-card">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85" alt="Phòng máy chủ và hạ tầng mạng" loading="lazy">
+                <div><span class="cyber-card-number">01 / NETWORK</span><h3>Network & traffic analysis</h3><p>Rèn TCP/IP, DNS, HTTP, subnetting và cách đọc traffic bằng Wireshark để hiểu hệ thống trước khi bảo vệ hệ thống.</p><a href="https://github.com/minhnhatle0312" target="_blank" rel="noopener">Xem lab trên GitHub ↗</a></div>
+            </article>
+            <article class="cyber-focus-card">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85" alt="Bảng mạch công nghệ" loading="lazy">
+                <div><span class="cyber-card-number">02 / BLUE TEAM</span><h3>Linux & system hardening</h3><p>Thực hành quyền truy cập, quản lý dịch vụ, log và checklist giảm bề mặt tấn công trên môi trường Linux.</p><a href="https://github.com/minhnhatle0312" target="_blank" rel="noopener">Xem ghi chép trên GitHub ↗</a></div>
+            </article>
+            <article class="cyber-focus-card">
+                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=85" alt="Bảo mật tài khoản trực tuyến" loading="lazy">
+                <div><span class="cyber-card-number">03 / WEB SECURITY</span><h3>Secure-by-design</h3><p>Tìm hiểu OWASP, xác thực, session, kiểm tra input và cách đưa tư duy bảo mật vào từng bước phát triển web.</p><a href="https://github.com/minhnhatle0312" target="_blank" rel="noopener">Theo dõi tiến độ ↗</a></div>
+            </article>
+        </div>
+    </section>
+
+    <section class="github-live-section" id="github-work">
+        <div class="github-live-header">
+            <div>
+                <span class="cyber-kicker">OPEN WORKSPACE / GITHUB</span>
+                <h2>Nhật ký phát triển thực tế</h2>
+                <p>Các repository công khai của mình sẽ được tải trực tiếp từ GitHub khi trang chạy. Nếu API tạm thời không phản hồi, hồ sơ GitHub vẫn luôn có thể mở bằng nút bên dưới.</p>
+            </div>
+            <a class="github-profile-button" href="https://github.com/minhnhatle0312" target="_blank" rel="noopener">Mở hồ sơ GitHub ↗</a>
+        </div>
+        <div class="github-stats-row" id="github-stats" aria-live="polite"><span class="github-loading-dot"></span><span>Đang đồng bộ dữ liệu GitHub...</span></div>
+        <div class="github-repo-grid" id="github-repositories">
+            <article class="github-repo-placeholder"><span>SYNC</span><h3>Đang tải các repository công khai</h3><p>Nội dung sẽ cập nhật tự động trong trình duyệt.</p></article>
+        </div>
+    </section>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="modal-title"></h3>
+            <div id="modal-content-area">
+            </div>
+        </div>
+    </div>
+
+    <section class="section services" id="services">
+    <h2>Các khóa học lập trình </h2>
+
+        <div class="section-explanation">
+        <p>
+            Mặc dù lĩnh vực Công nghệ thông tin và Khoa học máy tính là nguồn kiến thức vô tận và đa chiều. Nhưng với tôi qua những khóa học, video, hay nguồn tài liệu này sẽ giúp bạn có thêm động lực và định hướng ngành Công nghệ thông tin như tôi.
+        </p>
+        <p class="call-to-action-explanation">
+            Cùng khám phá nguồn cảm hứng mới nhé!
+        </p>
+    </div>
+
+    <div class="spacer large-spacer"></div>
+
+    <div class="service-grid">
+        <div class="service-item">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/_nxVx8nRlPE?controls=1" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="service-content">
+                <h3>Ngọn lửa - Ngành công nghệ thông tin</h3>
+                <p>Niềm cảm hứng đến từ khát khao khám phá sức mạnh công nghệ, nơi mỗi dòng code không chỉ giải quyết vấn đề mà còn tạo ra giá trị mới cho con người và xã hội.</p>
+            </div>
+        </div>
+        <div class="service-item">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/aHYzqqmooCI?controls=1" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="service-content">
+                <h3>IT là gì?</h3>
+                <p>Công nghệ thông tin – lĩnh vực mở ra sức mạnh số, kết nối con người và tạo giải pháp thông minh cho tương lai.</p>
+            </div>
+        </div>
+        <div class="service-item">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/70j3UJO-_uY?controls=1" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="service-content">
+                <h3>Lộ trình học hiệu quả</h3>
+                <p>Học tập hiệu quả, xác định mục tiêu, nắm vững nền tảng, rèn luyện qua thực hành, chuyên sâu lĩnh vực và không ngừng học hỏi để thích nghi với sự thay đổi của công nghệ.</p>
+            </div>
+        </div>
+        <div class="service-item">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/KQef64Kxp6U?controls=1" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="service-content">
+                <h3>Tìm hiểu cơ bản về lập trình C</h3>
+                <p>Tìm hiểu cơ bản về lập trình C giúp nắm vững cấu trúc ngôn ngữ C, cách viết chương trình, tư duy giải thuật và tạo nền tảng vững chắc để học các ngôn ngữ lập trình khác.</p>
+            </div>
+        </div>
+        <div class="service-item">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/tF9q98QCVdw?controls=1" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="service-content">
+                <h3>Tìm hiểu về lập trình web</h3>
+                <p>Tìm hiểu về lập trình web giúp nắm bắt cách xây dựng và vận hành website, từ giao diện người dùng đến xử lý dữ liệu phía máy chủ.</p>
+            </div>
+        </div>
+        <div class="service-item">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/vPigsZ-zk1g?controls=1" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="service-content">
+                <h3>Khám phá nền tảng GitHub</h3>
+                <p>Khám phá nền tảng GitHub giúp làm quen với quản lý mã nguồn, cộng tác nhóm và xây dựng hồ sơ lập trình chuyên nghiệp.</p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <audio id="background-audio" autoplay loop muted>
+        <source src="đường_dẫn_tới_file_âm_thanh_của_bạn.mp3" type="audio/mpeg">
+        <source src="đường_dẫn_tới_file_âm_thanh_của_bạn.ogg" type="audio/ogg">
+        Trình duyệt của bạn không hỗ trợ thẻ audio.
+    </audio>
+
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <span class="modal-close-img">&times;</span>
+        <img class="modal-content-img" id="fullImage">
+    </div>
+
+    <footer>
+        <p>© 2025 Build by NhatLee</p>
+    </footer>
+
+    <script>
+        function openImageModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('fullImage');
+            modal.style.display = 'flex';
+            modalImage.src = imgSrc;
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+        
+        // HÀM CHÍNH: Toggle Mobile Menu
+        function toggleMenu() {
+            const nav = document.getElementById('mobile-nav');
+            nav.classList.toggle('open'); 
+        }
+    </script>
+    
+</body>
+
+</html>
+
+

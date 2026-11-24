@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NhatLee's Blog - Góc Chia Sẻ Công Nghệ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary-dark: #0A192F;    
+      --color-secondary-dark: #112240;  
+      --color-accent: #64FFDA;         
+      --color-text-light: #CCD6F6;     
+      --color-text-sub: #8892B0;       
+      --color-shadow: rgba(2, 12, 27, 0.7);
+      --glass: rgba(255,255,255,0.03);
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--color-primary-dark);
+      color: var(--color-text-light);
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    a { text-decoration: none; color: var(--color-accent); transition: color 0.3s; }
+    a:hover { color: #55e6c7; }
+    h1,h2,h3,h4 { font-family: 'Merriweather', serif; font-weight: 700; }
+    h2 { font-size: 42px; margin-bottom: 40px; color: var(--color-accent); text-align: center; }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(180deg, rgba(10,25,47,0.95), var(--color-primary-dark));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 5%;
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      box-shadow: 0 6px 30px var(--color-shadow);
+      box-sizing: border-box;
+      height: 74px;
+      backdrop-filter: blur(6px);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 0.6px;
+    }
+    header h1 a { 
+      color: white; 
+      text-decoration: none; 
+      transition: all 0.3s ease;
+      position: relative;
+      padding-left: 6px;
+    }
+    header h1 a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 6px;
+      width: 0;
+      height: 2px;
+      background-color: var(--color-accent);
+      transition: width 0.3s ease;
+    }
+    header h1 a:hover::after {
+      width: calc(100% - 12px);
+    }
+
+    /* HAMBURGER */
+    .hamburger {
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--color-text-light);
+      transition: transform 0.25s ease, color 0.25s ease;
+      user-select: none;
+    }
+    .hamburger:hover { 
+      transform: rotate(90deg); 
+      color: var(--color-accent); 
+    }
+
+    /* MOBILE NAV */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      align-items: flex-end;
+      position: absolute;
+      top: 74px;
+      right: 0;
+      width: 100%;
+      background: var(--color-secondary-dark);
+      z-index: 999;
+      border-top: 1px solid #1e3a5f;
+      animation: slideDown 0.3s ease;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      padding: 15px 20px;
+      color: var(--color-text-light);
+      border-bottom: 1px solid #1e3a5f;
+      width: 100%;
+      text-align: right;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .mobile-nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.12), transparent);
+      transition: left 0.5s ease;
+    }
+    .mobile-nav a:hover { 
+      background: #1c3453; 
+      color: var(--color-accent); 
+    }
+    .mobile-nav a:hover::before {
+      left: 100%;
+    }
+
+    main { padding-top: 96px; }
+
+    /* LOADING SECTION */
+    .loading-bar-section {
+      text-align: center;
+      padding: 60px 5%;
+      border-bottom: 3px solid rgba(100,255,218,0.06);
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+    .typing-text {
+      display: inline-block;
+      border-right: 2px solid var(--color-accent);
+      animation: blink-caret 0.75s step-end infinite;
+      font-size: 1.05em;
+      font-weight: 700;
+      max-width: 88%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    @keyframes blink-caret { 50% { border-color: transparent; } }
+
+    .highlight-words {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .highlight-words span {
+      background: rgba(100,255,218,0.95);
+      color: var(--color-primary-dark);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+    .highlight-words span:hover { 
+      transform: translateY(-4px) scale(1.03); 
+      background: #55e6c7;
+    }
+
+    .loading-wrapper {
+      margin: 22px auto 10px;
+      max-width: 600px;
+      height: 18px;
+      background: #0e223f;
+      border-radius: 999px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 -2px 8px rgba(0,0,0,0.6);
+    }
+    .loading-wrapper:hover {
+      transform: scale(1.01);
+    }
+    .loading-progress-bar {
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(90deg, var(--color-accent), #00A389, #55E6C7);
+      background-size: 200% 100%;
+      animation: shimmer 2s linear infinite, progressMove 6s ease-in-out infinite;
+      border-radius: 999px;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    @keyframes progressMove {
+      0% { width: 18%; }
+      50% { width: 70%; }
+      100% { width: 22%; }
+    }
+    .new-status-message { 
+      margin-top: 12px; 
+      font-weight: 500; 
+      transition: all 0.3s ease;
+      color: var(--color-text-sub);
+    }
+    .new-status-message:hover {
+      color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    /* SEARCH + FILTER */
+    .blog-actions-section {
+      padding: 26px 5%;
+      border-bottom: 1px solid #12263f;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+    .search-box {
+      display: flex;
+      margin: 4px auto;
+      max-width: 680px;
+      border-radius: 30px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255,255,255,0.03);
+      background: var(--glass);
+    }
+    .search-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+    }
+    .search-box input {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--color-text-light);
+      transition: all 0.25s ease;
+    }
+    .search-box input::placeholder { color: #6f88a3; }
+    .search-box input:focus { box-shadow: none; }
+    .search-box button {
+      background: var(--color-accent);
+      border: none;
+      padding: 12px 18px;
+      cursor: pointer;
+      color: var(--color-primary-dark);
+      font-weight: 600;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .search-box button:hover { transform: translateY(-2px); }
+
+    .categories-filter {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      transition: all 0.25s ease;
+    }
+    .filter-btn {
+      background: #0f2540;
+      color: var(--color-text-light);
+      border: 1px solid #18324f;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      font-weight: 600;
+    }
+    .filter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.08), transparent);
+      transition: left 0.4s ease;
+    }
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--color-accent);
+      color: var(--color-primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(100, 255, 218, 0.12);
+    }
+    .filter-btn:hover::before { left: 100%; }
+
+    /* BLOG LIST - change to flex layout to prevent single-item stretching */
+    .blog-section { 
+      padding: 60px 5%; 
+      flex-grow: 1; 
+    }
+
+    /* IMPORTANT: use flex-wrap + centered alignment so when only 1 item it stays centered and not stretched */
+    .blog-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1100px;
+      margin: auto;
+      justify-content: center; /* ensure posts center rather than stretching */
+    }
+    /* Each item has a fixed preferred width so they won't stretch to full width */
+    .blog-item {
+      background: var(--color-secondary-dark);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 340px;               /* fixed width for consistent card size */
+      min-height: 360px;
+    }
+    .blog-item .card-top-badge {
+      position:absolute;
+      top:12px; left:12px;
+      background: rgba(255,255,255,0.06);
+      color: var(--color-text-light);
+      padding:6px 10px;
+      border-radius: 999px;
+      font-weight:700;
+      font-size:12px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    .blog-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(100, 255, 218, 0.04) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .blog-item:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 20px 50px rgba(0,0,0,0.75); }
+    .blog-item:hover::before { opacity: 1; }
+
+    .blog-item img { 
+      width: 100%; 
+      height: 200px; 
+      object-fit: cover; 
+      transition: all 0.45s ease;
+      display: block;
+    }
+    .blog-item:hover img { transform: scale(1.06) translateY(-4px); }
+
+    .blog-text { 
+      padding: 18px; 
+      flex-grow: 1; 
+      display: flex; 
+      flex-direction: column; 
+    }
+    .blog-text h3 { 
+      margin: 0 0 10px; 
+      color: var(--color-accent); 
+      transition: all 0.25s ease;
+      font-size: 18px;
+    }
+    .blog-item:hover .blog-text h3 { color: #55e6c7; }
+    .blog-text p { 
+      flex-grow: 1; 
+      margin: 0 0 12px; 
+      color: var(--color-text-sub); 
+      font-size: 14px; 
+    }
+    .blog-meta { 
+      font-size: 12px; 
+      color: #5d6c8e; 
+      margin-top: 6px; 
+      display:block;
+    }
+
+    /* Blog item actions */
+    .blog-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #0f213d;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: none;
+      color: var(--color-text-sub);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-weight:600;
+    }
+    .action-btn:hover { color: var(--color-accent); background: rgba(100,255,218,0.04); transform: translateY(-2px); }
+    .action-btn.liked { color: #ff6b6b; }
+
+    /* ADD POST BUTTON */
+    .add-post-btn {
+      position: fixed;
+      bottom: 40px; right: 40px;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: var(--color-primary-dark);
+      font-size: 36px;
+      text-align: center;
+      line-height: 60px;
+      box-shadow: 0 12px 36px rgba(100,255,218,0.35);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      z-index: 100;
+    }
+    .add-post-btn:hover { transform: rotate(90deg) scale(1.06); box-shadow: 0 18px 45px rgba(100,255,218,0.45); }
+
+    /* POST MODAL */
+    .post-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.92);
+      z-index: 2000;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .post-modal-content {
+      max-width: 900px;
+      margin: 70px auto;
+      background: linear-gradient(180deg, rgba(15,34,60,0.96), var(--color-secondary-dark));
+      padding: 30px;
+      border-radius: 14px;
+      position: relative;
+      animation: modalIn 0.28s cubic-bezier(.2,.9,.2,1);
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    @keyframes modalIn { from { opacity:0; transform: translateY(8px) scale(0.995) } to { opacity:1; transform: translateY(0) scale(1) } }
+    .modal-close-post {
+      position: absolute;
+      top: 10px; right: 16px;
+      font-size: 34px;
+      color: var(--color-accent);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .modal-close-post:hover { color:#55e6c7; transform: scale(1.05); }
+
+    .post-modal-content h2 { margin-top: 0; color: var(--color-accent); font-size: 24px; }
+    .post-meta { font-size: 13px; color: #a3b3d1; margin-bottom: 16px; }
+
+    /* modal body */
+    .modal-body { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
+    .modal-left img { width:100%; border-radius: 8px; margin-bottom: 12px; object-fit:cover; }
+    .modal-right {
+      background: rgba(255,255,255,0.02);
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.02);
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+    .like-btn {
+      background: var(--color-accent);
+      border: none;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--color-primary-dark);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .like-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(100, 255, 218, 0.18); }
+    .like-btn.liked { background: #ff6b6b; color: white; }
+
+    .comments { margin-top: 18px; }
+    .comment-form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      background: #0f213d;
+      color: var(--color-text-light);
+      margin-bottom: 10px;
+      transition: all 0.2s ease;
+      min-height: 64px;
+    }
+    .comment-form textarea:focus { box-shadow: 0 0 0 3px rgba(100,255,218,0.08); outline: none; }
+    .comment-form button {
+      background: var(--color-accent);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .comment-form button:hover { transform: translateY(-2px); }
+
+    .comment-list { margin-top: 14px; display:flex; flex-direction: column; gap:10px; }
+    .comment {
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      padding: 12px;
+      border-radius: 10px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    .comment .avatar {
+      width:44px; height:44px; border-radius:50%; background: linear-gradient(180deg,#6ee7b7,#34d399); display:flex; align-items:center; justify-content:center; font-weight:700; color:#042022; flex-shrink:0;
+    }
+    .comment-body { flex:1; }
+    .comment-body .meta-line { display:flex; gap:8px; align-items:center; font-size:12px; color:#9fb0d2; margin-bottom:6px; }
+    .comment-body .text { color:var(--color-text-light); font-size:14px; margin-bottom:8px; }
+    .comment-actions { display:flex; gap:8px; align-items:center; }
+    .comment-like-btn {
+      background: transparent; border: none; color:#9fb0d2; cursor:pointer; display:inline-flex; gap:6px; align-items:center; font-weight:600; padding:6px 8px; border-radius:8px;
+    }
+    .comment-like-btn:hover { color: var(--color-accent); background: rgba(100,255,218,0.03); transform: translateY(-2px); }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--color-secondary-dark);
+      color: var(--color-text-sub);
+      margin-top: auto;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 920px) {
+      .modal-body { grid-template-columns: 1fr; }
+      .modal-right { position: relative; top: auto; }
+    }
+    @media (max-width: 768px) {
+      .blog-content { gap:20px; }
+      .blog-item { width: 92%; max-width: 520px; min-height: 320px; }
+      .filter-btn { width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html">NhatLeeBlog</a></h1>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="index.html">Profile (Trang Chủ)</a>
+      <a href="index.html#cybersecurity">Cybersecurity</a>
+      <a href="index.html#github-work">GitHub workspace</a>
+      <a href="blog.html">Blog</a> 
+      <a href="contact.html">Thông tin liên hệ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="loading-bar-section">
+      <div>
+        <span id="typing-text-display" class="typing-text"></span>
+        <div class="highlight-words">
+          <span>AI</span><span>LẬP TRÌNH</span><span>REVIEW</span><span>CÔNG NGHỆ</span>
+        </div>
+      </div>
+      <div class="loading-wrapper">
+        <div class="loading-progress-bar"></div>
+      </div>
+      <p class="new-status-message">🧠 NhatLeeAI đang phân tích nội dung, sẵn sàng chia sẻ kiến thức mới.</p>
+    </section>
+
+    <section class="blog-actions-section">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm bài viết..." onkeyup="filterPosts()">
+        <button onclick="filterPosts()">🔍</button>
+      </div>
+      <div class="categories-filter" id="categoriesFilter">
+        <button class="filter-btn active" onclick="setFilter('all', this)">Tất cả</button>
+        <button class="filter-btn" onclick="setFilter('ai', this)">Trí tuệ Nhân tạo</button>
+        <button class="filter-btn" onclick="setFilter('code', this)">Lập trình</button>
+        <button class="filter-btn" onclick="setFilter('review', this)">Review & Chia sẻ</button>
+        <button class="filter-btn" onclick="setFilter('other', this)">Khác</button>
+      </div>
+    </section>
+
+    <section class="blog-section">
+      <h2>Góc chia sẻ & Bài viết</h2>
+      <div class="blog-content" id="blog-list"></div>
+    </section>
+  </main>
+
+  <a href="new-post.html" class="add-post-btn">+</a>
+
+  <div id="postModal" class="post-modal" aria-hidden="true">
+    <div class="post-modal-content">
+      <span class="modal-close-post" onclick="closePostModal()">&times;</span>
+      <h2 id="modal-post-title"></h2>
+      <p class="post-meta" id="modal-post-meta"></p>
+
+      <div class="modal-body">
+        <div class="modal-left">
+          <img id="modal-post-img" src="" alt="" style="display:none; width:100%; margin:0 0 12px;">
+          <div id="modal-post-body" style="color:var(--color-text-light); line-height:1.8;"></div>
+        </div>
+
+        <div class="modal-right">
+          <div style="display:flex; gap:10px; align-items:center; margin-bottom:12px;">
+            <div style="width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#a6f6df,#64FFDA); color:#042022; font-weight:800;">
+              NH
+            </div>
+            <div>
+              <div style="font-weight:800; color:var(--color-text-light)">NhatLee</div>
+              <div style="font-size:12px; color:#9fb0d2">Chia sẻ tri thức & công nghệ</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <button class="like-btn" id="modal-like-btn" onclick="likePost()">
+              <span id="like-icon">👍</span> Thích (<span id="like-count">0</span>)
+            </button>
+            <button class="like-btn" id="modal-share-btn" style="background:transparent;color:var(--color-text-light);border:1px solid rgba(255,255,255,0.03);margin-left:8px;" onclick="sharePost(currentPost?.id)">
+              ↗️ Chia sẻ
+            </button>
+          </div>
+
+          <div class="comments">
+            <h3 style="color:var(--color-accent); margin:0 0 8px;">Bình luận</h3>
+            <form class="comment-form" onsubmit="addComment(event)">
+              <textarea id="commentInput" placeholder="Viết bình luận..." required></textarea>
+              <button type="submit">Gửi</button>
+            </form>
+            <div class="comment-list" id="commentList"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Build by NhatLee</p>
+  </footer>
+
+  <script>
+    
+  const blogPosts = [
+      { 
+        id:1, 
+        title:"Tối ưu Prompt Engineering", 
+        excerpt:"Nghệ thuật trò chuyện với AI: Khám phá các kỹ thuật nâng cao để 'ra lệnh' cho mô hình ngôn ngữ và tạo ra kết quả chính xác, sáng tạo nhất.", 
+        date:"25/09/2025", 
+        imgSrc:"https://i.postimg.cc/y8YPWsKX/nganh-khoa-hoc-may-tinh-1.jpg", 
+        fullContent:"<p>Prompt Engineering không chỉ là nhập liệu, mà là cả một quy trình tư duy. Bằng cách hiểu rõ cấu trúc, cú pháp và mục tiêu của mô hình AI, bạn có thể điều chỉnh câu lệnh (prompt) để đạt được sự tối ưu về mặt chất lượng và hiệu suất. Bài viết này đi sâu vào các kỹ thuật như 'Chain-of-Thought Prompting', 'Few-Shot Learning' và 'Negative Prompting' để giúp bạn trở thành chuyên gia 'thì thầm' với AI.</p>", 
+        category:"ai", 
+        likes:3, 
+        comments:[] 
+      },
+      { 
+        id:2, 
+        title:"Tương lai Blockchain và AI", 
+        excerpt:"Khi Tính minh bạch (Blockchain) gặp Trí tuệ (AI): Sự giao thoa công nghệ định hình lại nền kinh tế số, từ tài chính phi tập trung đến xác thực quyền sở hữu nội dung.", 
+        date:"15/09/2025", 
+        imgSrc:"https://i.postimg.cc/Px4JLsTC/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-cen.jpg", 
+        fullContent:"<p>Sự kết hợp giữa Blockchain (tính bất biến, phi tập trung) và AI (khả năng phân tích, học hỏi) là một cặp đôi hoàn hảo. Blockchain cung cấp cơ sở dữ liệu an toàn, minh bạch cho việc đào tạo và xác minh các mô hình AI. Ngược lại, AI giúp tối ưu hóa hiệu suất mạng lưới Blockchain, phát hiện gian lận và nâng cao tốc độ giao dịch. Từ việc tạo ra các tác phẩm NFT với nguồn gốc rõ ràng đến quản lý chuỗi cung ứng thông minh, đây chính là hai trụ cột của Web3 tương lai.</p>", 
+        category:"ai", 
+        likes:5, 
+        comments:[] 
+      },
+      { 
+        id:3, 
+        title:"Review: Khóa học JavaScript", 
+        excerpt:"Đánh giá chân thực về khóa học JavaScript Essentials: Liệu đây có phải là lộ trình vững chắc giúp bạn làm chủ ngôn ngữ lập trình 'linh hồn' của Web?", 
+        date:"01/09/2025", 
+        imgSrc:"https://i.postimg.cc/3w3HkyRC/Javakhoahoc.png", 
+        fullContent:"<p>Chúng tôi đã tham gia và đánh giá chi tiết khóa học JS Essentials. Khóa học này không chỉ dừng lại ở các khái niệm cơ bản như biến, hàm hay vòng lặp, mà còn đi sâu vào các chủ đề nâng cao như lập trình bất đồng bộ (Async/Await), ES6+ và cách hoạt động của Event Loop. Đây là một nền tảng vững chắc cho bất kỳ ai muốn trở thành Front-end hoặc Full-stack Developer.</p>", 
+        category:"review", 
+        likes:2, 
+        comments:[] 
+      },
+      { 
+        id:4, 
+        title:"Review: Laptop Dell XPS 13 cho dân lập trình", 
+        excerpt:"Mỏng, nhẹ và Mạnh mẽ: Đánh giá chi tiết Dell XPS 13, chiếc laptop được mệnh danh là 'vũ khí' tối thượng cho các developer cần sự di động và hiệu năng cao.", 
+        date:"20/08/2025", 
+        imgSrc:"https://i.postimg.cc/Xv273K8Z/image.png", 
+        fullContent:"<p>Dell XPS 13 nổi bật với thiết kế InfinityEdge gần như không viền và bộ vi xử lý Intel Core i thế hệ mới. Bài đánh giá tập trung vào hiệu suất biên dịch code, khả năng đa nhiệm khi chạy Docker/VM, thời lượng pin thực tế và trải nghiệm gõ phím liên tục. Nếu bạn đang tìm kiếm sự cân bằng hoàn hảo giữa tính thẩm mỹ và sức mạnh kỹ thuật, XPS 13 là một lựa chọn đáng cân nhắc.</p>", 
+        category:"review", 
+        likes:0, 
+        comments:[] 
+      },
+      { 
+        id:5, 
+        title:"Kinh nghiệm học AI từ con số 0", 
+        excerpt:"Đừng sợ Machine Learning! Chia sẻ lộ trình tự học và các tài nguyên quý giá để bắt đầu hành trình từ một người mới hoàn toàn đến dự án AI đầu tiên của bạn.", 
+        date:"05/08/2025", 
+        imgSrc:"https://i.postimg.cc/Yqf7Mf2t/Kho-a-ho-c-AI-marketer-1-1024x640.png", 
+        fullContent:"<p>Hành trình học AI không hề dễ dàng, nhưng có thể đi được. Mình bắt đầu bằng việc làm quen với Python và các thư viện cơ bản (NumPy, Pandas), sau đó chuyển sang Machine Learning cơ bản (Regression, Classification) trên các nền tảng như Kaggle và Coursera. Quan trọng nhất là: Đừng ngần ngại tham gia các dự án thực tế, dù nhỏ, để áp dụng kiến thức.</p>", 
+        category:"review", 
+        likes:0, 
+        comments:[] 
+      },
+      { 
+        id:6, 
+        title:"5 website giúp cải thiện năng suất làm việc", 
+        excerpt:"Tăng gấp đôi hiệu quả công việc với Top 5 công cụ online đã được kiểm chứng giúp quản lý thời gian, thiết kế và giao tiếp tối ưu.", 
+        date:"22/07/2025", 
+        imgSrc:"https://i.postimg.cc/XqkPSLKN/image.png", 
+        fullContent:"<ul><li>**Notion:** Không chỉ là công cụ ghi chú, Notion là không gian làm việc tất cả trong một cho cá nhân và đội nhóm.</li><li>**Trello:** Quản lý dự án theo phương pháp Kanban một cách trực quan và dễ dàng.</li><li>**Grammarly:** Trợ lý viết lách giúp bài viết, email của bạn chuyên nghiệp và không lỗi ngữ pháp.</li><li>**RescueTime:** Tự động theo dõi thời gian và phân tích thói quen làm việc để bạn biết mình đang dành thời gian vào đâu.</li><li>**Canva:** Công cụ thiết kế đồ họa đơn giản nhưng mạnh mẽ, giúp tạo ra nội dung đẹp mắt chỉ trong vài phút.</li></ul>", 
+        category:"other", 
+        likes:0, 
+        comments:[] 
+      },
+
+      { 
+        id:7, 
+        title:"Giới thiệu Java: Ngôn ngữ lập trình vạn năng", 
+        excerpt:"Java – từ ứng dụng di động đến hệ thống doanh nghiệp: Vì sao nó vẫn giữ vị trí số 1 trong lập trình hiện đại?", 
+        date:"10/07/2025", 
+        imgSrc:"https://i.postimg.cc/MH9g5sBq/image.png", 
+        fullContent:"<p>Java được biết đến với khẩu hiệu 'Write Once, Run Anywhere'. Đây là ngôn ngữ hướng đối tượng mạnh mẽ, có thể chạy trên nhiều nền tảng khác nhau nhờ JVM. Với sự hỗ trợ từ cộng đồng đông đảo và kho thư viện phong phú, Java vẫn là lựa chọn hàng đầu trong phát triển web, mobile (Android) và hệ thống doanh nghiệp.</p>", 
+        category:"review", 
+        likes:4, 
+        comments:[] 
+      },
+      { 
+        id:8, 
+        title:"Spring Boot – Nền tảng cho ứng dụng doanh nghiệp", 
+        excerpt:"Khám phá sức mạnh của Spring Boot: Từ phát triển nhanh chóng đến triển khai ứng dụng quy mô lớn.", 
+        date:"05/07/2025", 
+        imgSrc:"https://i.postimg.cc/tgPQbtKK/image.png", 
+        fullContent:"<p>Spring Boot là framework phổ biến nhất trong hệ sinh thái Java, giúp đơn giản hóa việc xây dựng các ứng dụng doanh nghiệp. Với cấu hình tối giản, tích hợp sẵn nhiều công cụ mạnh mẽ, Spring Boot cho phép lập trình viên tập trung vào logic thay vì mất thời gian thiết lập môi trường. Đây là nền tảng lý tưởng cho microservices và ứng dụng web hiện đại.</p>", 
+        category:"review", 
+        likes:6, 
+        comments:[] 
+      },
+      { 
+        id:9, 
+        title:"JavaScript vs Java – Sự khác biệt cần biết", 
+        excerpt:"Cùng tên nhưng khác biệt: Java và JavaScript – hai thế giới với mục đích và ứng dụng riêng biệt.", 
+        date:"01/07/2025", 
+        imgSrc:"https://i.postimg.cc/RZh4ktCs/image.png", 
+        fullContent:"<p>Nhiều người nhầm lẫn Java và JavaScript. Thực tế, Java là ngôn ngữ lập trình độc lập, hướng đối tượng, còn JavaScript là ngôn ngữ kịch bản chạy trên trình duyệt để tạo sự tương tác cho web. Cả hai đều quan trọng: Java thống trị backend, còn JavaScript không thể thiếu ở frontend.</p>", 
+        category:"other", 
+        likes:3, 
+        comments:[] 
+      },
+      { 
+        id:10, 
+        title:"Hibernate – ORM mạnh mẽ trong Java", 
+        excerpt:"Giảm tải lập trình viên với Hibernate: Quản lý dữ liệu hiệu quả mà không cần viết SQL phức tạp.", 
+        date:"20/06/2025", 
+        imgSrc:"https://i.postimg.cc/5954L1kw/image.png", 
+        fullContent:"<p>Hibernate là framework ORM (Object Relational Mapping) nổi tiếng trong Java, giúp ánh xạ các đối tượng Java với bảng dữ liệu trong cơ sở dữ liệu. Điều này giúp tiết kiệm thời gian viết truy vấn SQL, đồng thời giảm lỗi và tăng năng suất cho các ứng dụng quy mô lớn.</p>", 
+        category:"code", 
+        likes:5, 
+        comments:[] 
+      },
+      { 
+        id:11, 
+        title:"Mô hình MVC trong Java Web", 
+        excerpt:"Hiểu rõ kiến trúc Model – View – Controller để xây dựng ứng dụng web Java dễ bảo trì và mở rộng.", 
+        date:"10/06/2025", 
+        imgSrc:"https://i.postimg.cc/MGcZQQhB/image.png", 
+        fullContent:"<p>MVC (Model – View – Controller) là mô hình kiến trúc phổ biến trong lập trình Java Web. Nó chia ứng dụng thành 3 phần riêng biệt: Model (dữ liệu), View (giao diện) và Controller (xử lý logic). Điều này giúp code gọn gàng, dễ bảo trì và nâng cấp khi dự án mở rộng.</p>", 
+        category:"code", 
+        likes:2, 
+        comments:[] 
+      },
+      { 
+        id:12, 
+        title:"Java 21 – Những tính năng mới nổi bật", 
+        excerpt:"Phiên bản Java mới nhất mang đến cải tiến vượt bậc: Hiệu năng, bảo mật và lập trình hiện đại hơn.", 
+        date:"01/06/2025", 
+        imgSrc:"https://i.postimg.cc/4yvx3RrX/image.png", 
+        fullContent:"<p>Java 21 giới thiệu nhiều tính năng đáng chú ý như Pattern Matching nâng cao, Virtual Threads (Project Loom) và cải thiện hiệu năng JVM. Đây là bước tiến quan trọng giúp Java cạnh tranh mạnh mẽ hơn trong kỷ nguyên điện toán đám mây và xử lý song song.</p>", 
+        category:"code", 
+        likes:7, 
+        comments:[] 
+      },
+  ];
+
+
+console.log(blogPosts);
+
+    let currentFilter = "all";
+    let currentPost = null;
+    let likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
+    // postsState lưu bản sao posts có cập nhật (likes, comments.likes,...)
+    let postsState = JSON.parse(localStorage.getItem('postsState')) || null;
+    if (!postsState) {
+      // clone blogPosts (deep copy minimal)
+      postsState = blogPosts.map(p => ({ ...p, comments: (p.comments||[]).map(c=>({...c, likes:c.likes||0})) }));
+      localStorage.setItem('postsState', JSON.stringify(postsState));
+    }
+
+    // Utility: sync postsState to localStorage
+    function persistPostsState() {
+      localStorage.setItem('postsState', JSON.stringify(postsState));
+    }
+
+    // Toggle mobile menu
+    function toggleMenu() {
+      document.getElementById('mobile-nav').classList.toggle('open');
+    }
+
+    function getAllPosts(){ 
+      return postsState;
+    }
+
+    function filterPosts() {
+      const query = document.getElementById("searchInput").value.toLowerCase().trim();
+
+      const results = blogPosts.filter(post =>
+        post.title.toLowerCase().includes(query)
+      );
+
+      // gọi lại hàm render để hiển thị danh sách bài viết kết quả
+      renderPosts(results);
+    }
+
+    function loadBlogPosts() {
+      const list = document.getElementById('blog-list');
+      list.innerHTML = "";
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+      const filtered = getAllPosts().filter(post=>{
+        const categoryMatch = currentFilter==="all" || post.category===currentFilter;
+        const searchMatch = post.title.toLowerCase().includes(searchTerm) || post.excerpt.toLowerCase().includes(searchTerm);
+        return categoryMatch && searchMatch;
+      });
+
+      if(filtered.length === 0) {
+        list.innerHTML = "<p style='text-align:center;color:#8892B0;'>Không tìm thấy bài viết.</p>";
+        return;
+      }
+
+      filtered.forEach(post=>{
+        const div = document.createElement("div");
+        div.className="blog-item";
+        // Add data-post-id for reliable DOM lookup
+        div.setAttribute('data-post-id', post.id);
+        div.onclick=()=>openPostModal(post.id);
+
+        // Check if post is liked
+        const isLiked = likedPosts.includes(post.id);
+        const displayedLikes = post.likes + (isLiked ? 1 : 0);
+
+        // small ribbon if new (within 30 days) - cosmetic only
+        const createdDateParts = post.date.split('/');
+        let badgeHtml = '';
+        try {
+          const d = new Date(`${createdDateParts[2]}-${createdDateParts[1]}-${createdDateParts[0]}`);
+          const diffDays = Math.floor((Date.now() - d.getTime())/(1000*60*60*24));
+          if (diffDays <= 30) badgeHtml = `<div class="card-top-badge">MỚI</div>`;
+        } catch(e){}
+
+        div.innerHTML=`
+          ${badgeHtml}
+          <img src="${post.imgSrc}" alt="">
+          <div class="blog-text">
+            <h3>${post.title}</h3>
+            <p>${post.excerpt}</p>
+            <span class="blog-meta">Ngày đăng: ${post.date} | Thẻ: ${post.category.toUpperCase()}</span>
+            <div class="blog-actions">
+              <button class="action-btn ${isLiked ? 'liked' : ''}" onclick="event.stopPropagation(); toggleLike(${post.id}, this)">
+                <span>${isLiked ? '❤️' : '🤍'}</span> ${displayedLikes}
+              </button>
+              <button class="action-btn" onclick="event.stopPropagation(); openPostModal(${post.id})">
+                <span>💬</span> ${post.comments.length}
+              </button>
+              <button class="action-btn" onclick="event.stopPropagation(); sharePost(${post.id})">
+                <span>↗️</span> Chia sẻ
+              </button>
+            </div>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function setFilter(cat,btn){
+      currentFilter = cat;
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      loadBlogPosts();
+    }
+
+
+    function toggleLike(postId, element) {
+      const indexLiked = likedPosts.indexOf(postId);
+      const postIndex = postsState.findIndex(p => p.id === postId);
+      if (postIndex === -1) return;
+      const post = postsState[postIndex];
+
+      if (indexLiked === -1) {
+        // Like the post (client-side)
+        likedPosts.push(postId);
+        post.likes += 1;
+        element.classList.add('liked');
+        element.innerHTML = `<span>❤️</span> ${post.likes}`;
+      } else {
+        // Unlike
+        likedPosts.splice(indexLiked, 1);
+        post.likes = Math.max(0, post.likes - 1);
+        element.classList.remove('liked');
+        element.innerHTML = `<span>🤍</span> ${post.likes}`;
+      }
+
+      // persist liked and posts state
+      localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+      persistPostsState();
+
+      // If modal open for this post, update modal like state too
+      if (currentPost && currentPost.id === postId) {
+        document.getElementById('like-count').textContent = post.likes;
+        const likeBtn = document.getElementById('modal-like-btn');
+        if (likedPosts.includes(postId)) {
+          likeBtn.classList.add('liked');
+          document.getElementById('like-icon').textContent = '❤️';
+        } else {
+          likeBtn.classList.remove('liked');
+          document.getElementById('like-icon').textContent = '👍';
+        }
+      }
+    }
+
+    // -------------------------
+    // SHARE
+    // -------------------------
+    function sharePost(postId) {
+      const post = postsState.find(p => p.id === postId);
+      if (!post) return;
+      if (navigator.share) {
+        navigator.share({ title: post.title, text: post.excerpt, url: window.location.href + '?post=' + postId })
+        .then(()=>console.log('Chia sẻ OK')).catch(e=>console.log('Share error', e));
+      } else {
+        const shareUrl = window.location.href + '?post=' + postId;
+        navigator.clipboard.writeText(shareUrl).then(()=>alert('Đã sao chép liên kết bài viết vào clipboard!'));
+      }
+    }
+
+    // -------------------------
+    // OPEN MODAL
+    // -------------------------
+    function openPostModal(id){
+      const post = getAllPosts().find(p=>p.id===id);
+      if(!post) return;
+      currentPost = post;
+
+      document.getElementById('modal-post-title').textContent=post.title;
+      document.getElementById('modal-post-meta').textContent=`Ngày đăng: ${post.date} | Thẻ: ${post.category.toUpperCase()}`;
+      const img=document.getElementById('modal-post-img');
+      img.src=post.imgSrc;
+      img.style.display="block";
+      document.getElementById('modal-post-body').innerHTML=post.fullContent;
+
+      const isLiked = likedPosts.includes(post.id);
+      document.getElementById('like-count').textContent=post.likes;
+      const likeBtn = document.getElementById('modal-like-btn');
+      if (isLiked) {
+        likeBtn.classList.add('liked');
+        document.getElementById('like-icon').textContent = '❤️';
+      } else {
+        likeBtn.classList.remove('liked');
+        document.getElementById('like-icon').textContent = '👍';
+      }
+
+      loadComments();
+
+      document.getElementById('postModal').style.display="block";
+      document.getElementById('postModal').setAttribute('aria-hidden','false');
+      // prevent body scroll on modal open
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePostModal(){
+      document.getElementById('postModal').style.display="none";
+      document.getElementById('postModal').setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    // -------------------------
+    // LIKE FROM MODAL (reuses toggleLike, but needs correct element reference)
+    // -------------------------
+    function likePost(){
+      if(!currentPost) return;
+      // try to find the corresponding action button in the card list; fallback to creating a temporary element
+      const cardBtn = document.querySelector(`.blog-item[data-post-id="${currentPost.id}"] .action-btn`);
+      if (cardBtn) {
+        toggleLike(currentPost.id, cardBtn);
+      } else {
+        // fallback: create a fake element with minimal interface
+        const fake = { classList:{ add:()=>{}, remove:()=>{} }, innerHTML: '' };
+        toggleLike(currentPost.id, fake);
+        // update modal display counts
+        document.getElementById('like-count').textContent = currentPost.likes;
+        const likeBtn = document.getElementById('modal-like-btn');
+        if (likedPosts.includes(currentPost.id)) {
+          likeBtn.classList.add('liked');
+          document.getElementById('like-icon').textContent = '❤️';
+        } else {
+          likeBtn.classList.remove('liked');
+          document.getElementById('like-icon').textContent = '👍';
+        }
+      }
+      // refresh list to update numbers and classes
+      loadBlogPosts();
+    }
+
+    function addComment(e){
+      e.preventDefault();
+      const text=document.getElementById('commentInput').value;
+      if(!text.trim()) return;
+      const now = new Date();
+      const dateTime = now.toLocaleString('vi-VN');
+
+      // ensure comment object has likes
+      const newComment = { text: text.trim(), date: dateTime, likes: 0 };
+
+      currentPost.comments.push(newComment);
+
+      // persist postsState
+      persistPostsState();
+
+      // Clear input
+      document.getElementById('commentInput').value="";
+
+      // Re-render comments & list counts
+      loadComments();
+      loadBlogPosts();
+    }
+
+    function loadComments(){
+      const list=document.getElementById('commentList');
+      list.innerHTML="";
+
+      if (!currentPost || !currentPost.comments || currentPost.comments.length === 0) {
+        list.innerHTML = '<p style="color: #8892B0; text-align: center;">Chưa có bình luận nào.</p>';
+        return;
+      }
+
+      currentPost.comments.forEach((comment, idx)=>{
+        const div=document.createElement("div");
+        div.className="comment";
+        // Show avatar initials (first 2 chars) for fun
+        const initials = ('NH').slice(0,2).toUpperCase(); // fixed for demo; you can customize per user
+        div.innerHTML = `
+          <div class="avatar">${initials}</div>
+          <div class="comment-body">
+            <div class="meta-line">
+              <strong style="color:var(--color-text-light);font-weight:800;">Người dùng</strong>
+              <span>•</span>
+              <span>${comment.date}</span>
+            </div>
+            <div class="text">${escapeHtml(comment.text)}</div>
+            <div class="comment-actions">
+              <button class="comment-like-btn" onclick="event.stopPropagation(); toggleCommentLike(${currentPost.id}, ${idx}, this)">
+                <span class="c-like-icon">${comment.likes>0? '❤️':'🤍'}</span>
+                <span class="c-like-count">${comment.likes}</span> Thích
+              </button>
+            </div>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    // Toggle like on a comment (postId, commentIndex)
+    function toggleCommentLike(postId, commentIndex, btnEl) {
+      const pIndex = postsState.findIndex(p => p.id === postId);
+      if (pIndex === -1) return;
+      const comment = postsState[pIndex].comments[commentIndex];
+      if (!comment) return;
+
+      comment.likes = (comment.likes || 0) + 1;
+      // For this demo we'll do only like (no unlike). If you want toggle, you can add a 'likedByUser' flag per comment.
+
+      // update UI quickly
+      btnEl.querySelector('.c-like-icon').textContent = '❤️';
+      btnEl.querySelector('.c-like-count').textContent = comment.likes;
+      btnEl.style.color = '#ff6b6b';
+
+      // persist
+      persistPostsState();
+
+      // update main list counts if needed
+      loadBlogPosts();
+
+    }
+
+    // small helper to prevent XSS
+    function escapeHtml(unsafe) {
+      return unsafe
+           .replace(/&/g, "&amp;")
+           .replace(/</g, "&lt;")
+           .replace(/>/g, "&gt;")
+           .replace(/"/g, "&quot;")
+           .replace(/'/g, "&#039;");
+    }
+
+    // Typing effect (unchanged aside from faster guard)
+    const textToType = "Chào mừng bạn đến với NhatLeeBlog. Nơi chia sẽ những nội dung hay và mới nhất về AI, Lập trình và Công nghệ.";
+    const typingElement = document.getElementById('typing-text-display');
+    let charIndex=0;
+    function typeWriter(){
+      if(charIndex<textToType.length){
+        typingElement.textContent += textToType.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter,38);
+      }
+    }
+
+    // On load, initialize from localStorage states
+    window.onload=()=>{
+      // read likedPosts (may have been set in prior session)
+      likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || likedPosts;
+      // ensure postsState exists and merges updates if blogPosts changed
+      const stored = JSON.parse(localStorage.getItem('postsState')) || null;
+      if (stored) {
+        // merge by id (so if new blogPosts added in code, they appear)
+        const merged = blogPosts.map(bp=>{
+          const s = stored.find(x=>x.id===bp.id);
+          return s ? { ...bp, likes: s.likes ?? bp.likes, comments: s.comments ?? bp.comments } : { ...bp, comments: bp.comments || [] };
+        });
+        postsState = merged;
+        persistPostsState();
+      } else {
+        postsState = blogPosts.map(p => ({ ...p, comments: (p.comments||[]).map(c=>({...c, likes:c.likes||0})) }));
+        persistPostsState();
+      }
+
+      loadBlogPosts();
+      typeWriter();
+    }
+
+    // close modal on outside click
+    document.getElementById('postModal').addEventListener('click', function(e){
+      if (e.target === this) closePostModal();
+    });
+
+    // accessibility: close modal on ESC
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') {
+        closePostModal();
+      }
+    });
+  </script>
+</body>
+</html>

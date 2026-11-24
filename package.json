@@ -1,0 +1,14 @@
+{
+  "name": "minhnhat-cybersecurity-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static portfolio and learning space for Lê Minh Nhật",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node tools/check-site.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
